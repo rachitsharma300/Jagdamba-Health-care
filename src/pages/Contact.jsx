@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import ContactBg from '../assets/images/demo.png'; // Add this image
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -69,8 +70,19 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-16 px-4 bg-gray-50">
-      <div className="max-w-7xl mx-auto">
+    <section id="contact" className="relative py-16 px-4">
+      {/* Background image with overlay */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-blue-900/30 backdrop-blur-sm"></div>
+        <img 
+          src={ContactBg} 
+          alt="Background" 
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -78,10 +90,10 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Get in <span className="text-teal-600">Touch</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Get in <span className="text-teal-300">Touch</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-white/90 max-w-2xl mx-auto">
             We're here to answer your questions and discuss your care needs.
           </p>
         </motion.div>
@@ -95,12 +107,12 @@ const Contact = () => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <div className="bg-white p-6 rounded-xl shadow-md">
+            <div className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20">
               <h3 className="text-xl font-bold text-gray-800 mb-4">Contact Information</h3>
               
               <div className="space-y-4">
                 {contactMethods.map((method, i) => (
-                  <div key={i} className="flex items-start space-x-4 p-3 hover:bg-gray-50 rounded-lg transition">
+                  <div key={i} className="flex items-start space-x-4 p-3 hover:bg-gray-50/80 rounded-lg transition">
                     <div className="mt-1 flex-shrink-0">
                       {method.icon}
                     </div>
@@ -120,7 +132,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-md">
+            <div className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20">
               <h3 className="text-xl font-bold text-gray-800 mb-4">Visit Us</h3>
               <div className="flex items-start space-x-4">
                 <svg className="w-6 h-6 text-teal-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,7 +162,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="bg-white p-6 rounded-xl shadow-md"
+            className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20"
           >
             <div className="flex border-b border-gray-200 mb-6">
               <button
