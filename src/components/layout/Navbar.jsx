@@ -55,16 +55,16 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
 
-          {/* Brand */}
+          {/* Brand - Updated to always show full name */}
           <div className="flex-shrink-0 flex items-center">
             <ScrollLink
               to="hero"
               smooth={true}
               duration={500}
-              className="text-2xl font-bold tracking-wide cursor-pointer flex items-center text-white"
+              className="text-2xl font-bold tracking-wide cursor-pointer flex items-center text-white whitespace-nowrap"
             >
               <span className="text-teal-300">JAGDAMBA</span>
-              <span className="hidden sm:inline ml-1 text-white">Health Care</span>
+              <span className="ml-1 text-white">HEALTH CARE</span>
             </ScrollLink>
           </div>
 
