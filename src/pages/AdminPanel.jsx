@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FaLock, FaUnlock, FaPalette, FaBell, FaTools, FaUsers, FaChartLine, FaTrash, FaEdit, FaSignOutAlt } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
+import { FaLock, FaUnlock, FaPalette, FaBell, FaTools, FaTrash, FaEdit, FaSignOutAlt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,25 +21,6 @@ const AdminPanel = () => {
   const [activeTab, setActiveTab] = useState('updates');
   const [editUpdateId, setEditUpdateId] = useState(null);
   const [editUpdateText, setEditUpdateText] = useState("");
-
-  // Analytics data (mock)
-  const [analytics, setAnalytics] = useState({
-    visitors: 1243,
-    pageViews: 5678,
-    conversions: 234,
-    popularPages: [
-      { name: 'Home', views: 1200 },
-      { name: 'Services', views: 980 },
-      { name: 'Contact', views: 750 }
-    ]
-  });
-
-  // User management (mock)
-  const [users, setUsers] = useState([
-    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'admin', lastLogin: '2023-05-15' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'editor', lastLogin: '2023-05-14' },
-    { id: 3, name: 'Bob Johnson', email: 'bob@example.com', role: 'viewer', lastLogin: '2023-05-10' }
-  ]);
 
   // Cleanup expired updates on load
   useEffect(() => {
@@ -267,20 +248,6 @@ const AdminPanel = () => {
               <FaTools className="mr-2" />
               Settings
             </button>
-            <button
-              onClick={() => setActiveTab('users')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm flex items-center ${activeTab === 'users' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}
-            >
-              <FaUsers className="mr-2" />
-              Users
-            </button>
-            <button
-              onClick={() => setActiveTab('analytics')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm flex items-center ${activeTab === 'analytics' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}
-            >
-              <FaChartLine className="mr-2" />
-              Analytics
-            </button>
           </nav>
         </div>
 
@@ -480,134 +447,6 @@ const AdminPanel = () => {
                     </button>
                   </div>
                 </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Users Tab */}
-        {activeTab === 'users' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            className="bg-white shadow rounded-lg p-6"
-          >
-            <h2 className="text-xl font-semibold mb-6 flex items-center">
-              <FaUsers className="mr-2 text-primary" />
-              User Management
-            </h2>
-            
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Name
-                    </th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Email
-                    </th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Role
-                    </th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Last Login
-                    </th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {users.map((user) => (
-                    <tr key={user.id}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {user.name}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {user.email}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                          user.role === 'admin' ? 'bg-purple-100 text-purple-800' :
-                          user.role === 'editor' ? 'bg-blue-100 text-blue-800' :
-                          'bg-green-100 text-green-800'
-                        }`}>
-                          {user.role}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {user.lastLogin}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button className="text-primary hover:text-primary-dark mr-3">
-                          Edit
-                        </button>
-                        <button className="text-red-500 hover:text-red-700">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            
-            <div className="mt-6 flex justify-between items-center">
-              <div className="text-sm text-gray-500">
-                Showing 1 to {users.length} of {users.length} users
-              </div>
-              <button className="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg transition-colors">
-                Add New User
-              </button>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Analytics Tab */}
-        {activeTab === 'analytics' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          >
-            <div className="bg-white shadow rounded-lg p-6 col-span-1">
-              <h3 className="text-lg font-medium mb-4">Visitors</h3>
-              <div className="text-3xl font-bold text-primary">{analytics.visitors}</div>
-              <p className="text-sm text-gray-500 mt-1">+12% from last week</p>
-            </div>
-            
-            <div className="bg-white shadow rounded-lg p-6 col-span-1">
-              <h3 className="text-lg font-medium mb-4">Page Views</h3>
-              <div className="text-3xl font-bold text-primary">{analytics.pageViews}</div>
-              <p className="text-sm text-gray-500 mt-1">+8% from last week</p>
-            </div>
-            
-            <div className="bg-white shadow rounded-lg p-6 col-span-1">
-              <h3 className="text-lg font-medium mb-4">Conversions</h3>
-              <div className="text-3xl font-bold text-primary">{analytics.conversions}</div>
-              <p className="text-sm text-gray-500 mt-1">+5% from last week</p>
-            </div>
-            
-            <div className="bg-white shadow rounded-lg p-6 col-span-3">
-              <h3 className="text-lg font-medium mb-4">Popular Pages</h3>
-              <div className="space-y-3">
-                {analytics.popularPages.map((page, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between text-sm mb-1">
-                      <span>{page.name}</span>
-                      <span>{page.views} views</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div 
-                        className="bg-primary h-2 rounded-full" 
-                        style={{ width: `${(page.views / analytics.popularPages[0].views) * 100}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </motion.div>
