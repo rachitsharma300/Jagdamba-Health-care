@@ -55,4 +55,5 @@ Edit
 ```bash
 git clone https://github.com/your-username/JHC.git
 cd JHC
-
+npm install
+```
