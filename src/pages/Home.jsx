@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import HeroImage from '../assets/images/nurse-consultation-jagdamba-health.png'; // Add your hero image
+import HeroImage from '../assets/images/nurse-consultation-jagdamba-health-one.png'; // Add your hero image
 
 const Home = () => {
   return (
