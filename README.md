@@ -70,5 +70,13 @@ Notifications system
 Chart analytics
 
 Edit/Delete records
+🌐 Meta & SEO Setup
+The index.html file is optimized with:
 
+Open Graph (Facebook)
 
+Twitter Card
+
+SEO-friendly titles & descriptions
+
+Favicon & OG image
