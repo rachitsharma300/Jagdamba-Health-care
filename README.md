@@ -57,5 +57,18 @@ git clone https://github.com/your-username/JHC.git
 cd JHC
 npm install
 npm run dev
-
 ```
+🔧 Admin Panel Features
+View and manage users
+
+Lock/unlock actions
+
+Change themes
+
+Notifications system
+
+Chart analytics
+
+Edit/Delete records
+
+
