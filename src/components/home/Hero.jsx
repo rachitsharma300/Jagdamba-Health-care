@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import HeroPic from "../../assets/images/nurse-consultation-jagdamba-health.png";
+import HeroPic from "../../assets/images/nurse-consultation-jagdamba-health-one.png";
 import { motion } from "framer-motion";
 import Avatar from "react-avatar";
 import { FaWhatsapp, FaStar } from "react-icons/fa";
