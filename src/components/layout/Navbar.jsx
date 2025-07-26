@@ -3,6 +3,7 @@ import { Link as ScrollLink } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
 import { FaBars, FaTimes, FaPhoneAlt } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from '../../assets/logo/logo.png'; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,16 +56,23 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
 
-          {/* Brand - Updated to always show full name */}
+          {/* Brand with Logo */}
           <div className="flex-shrink-0 flex items-center">
             <ScrollLink
               to="hero"
               smooth={true}
               duration={500}
-              className="text-2xl font-bold tracking-wide cursor-pointer flex items-center text-white whitespace-nowrap"
+              className="flex items-center cursor-pointer"
             >
-              <span className="text-teal-300">JAGDAMBA</span>
-              <span className="ml-1 text-white">HEALTH CARE</span>
+              <img 
+                src={logo} 
+                alt="Jagdamba Health Care Logo" 
+                className="h-20 w-auto mr-3" 
+              />
+              <div className="text-2xl font-bold tracking-wide text-white whitespace-nowrap">
+                <span className="text-teal-300">JAGDAMBA</span>
+                <span className="ml-1 text-white">HEALTH CARE</span>
+              </div>
             </ScrollLink>
           </div>
 
