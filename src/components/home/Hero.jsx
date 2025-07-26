@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import HeroPic from "../../assets/images/nurse-consultation-jagdamba-health-one.png";
+import HeroPic1 from "../../assets/images/nurse-consultation-jagdamba-health-one.png";
+import HeroPic2 from "../../assets/images/nurse-consultation-jagdamba-health-two.png";
+import HeroPic3 from "../../assets/images/nurse-consultation-jagdamba-health-three.png";
 import { motion } from "framer-motion";
 import Avatar from "react-avatar";
 import { FaWhatsapp, FaStar } from "react-icons/fa";
 
 const Hero = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [
+    { src: HeroPic1, alt: "Professional nurse providing consultation" },
+    { src: HeroPic2, alt: "Elderly care with compassion" },
+    { src: HeroPic3, alt: "Home care services" }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -56,7 +72,7 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
         >
-          {/* Left Content */}
+          {/* Left Content - Fully Restored */}
           <motion.div 
             className="lg:w-1/2 mb-10 lg:mb-0 text-center lg:text-left"
             variants={itemVariants}
@@ -139,20 +155,26 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Image */}
+          {/* Right Image - Fixed mobile display */}
           <motion.div 
-            className="lg:w-1/2 flex justify-center"
+            className="lg:w-1/2 flex justify-center w-full"
             variants={itemVariants}
           >
-            <div className="relative">
-              <img
-                src={HeroPic}
-                alt="Professional nurse providing consultation to elderly patient at home"
-                className="w-full max-w-lg rounded-xl shadow-2xl object-cover border-4 border-white/20 hover:border-teal-300 transition-all duration-300"
-                width="600"
-                height="400"
-                loading="eager"
-              />
+            <div className="relative w-full max-w-lg h-[300px] sm:h-[350px] md:h-[400px]">
+              {images.map((image, index) => (
+                <motion.img
+                  key={index}
+                  src={image.src}
+                  alt={image.alt}
+                  className={`absolute top-0 left-0 w-full h-full rounded-xl shadow-2xl object-cover object-center border-4 ${index === currentImageIndex ? 'border-teal-300' : 'border-white/20'} transition-all duration-300`}
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: index === currentImageIndex ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.8 }}
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+              ))}
               <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-white p-3 sm:p-4 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-200">
                 <div className="text-gray-900 font-bold text-sm sm:text-lg">24/7 Care Available</div>
                 <div className="text-teal-600 text-xs sm:text-base">Emergency Response: 30 mins</div>
@@ -163,17 +185,6 @@ const Hero = () => {
             </div>
           </motion.div>
         </motion.div>
-      </div>
-
-      {/* Floating WhatsApp button */}
-      <div className="fixed bottom-6 right-6 z-50 md:hidden">
-        <a 
-          href="https://wa.me/YOUR_PHONE_NUMBER" 
-          className="bg-green-500 text-white p-3 rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 transition-colors duration-200"
-          aria-label="Contact us on WhatsApp"
-        >
-          <FaWhatsapp className="w-6 h-6" />
-        </a>
       </div>
     </section>
   );
