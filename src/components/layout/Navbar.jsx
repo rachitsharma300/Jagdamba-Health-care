@@ -3,7 +3,6 @@ import { Link as ScrollLink } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
 import { FaBars, FaTimes, FaPhoneAlt } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../../assets/logo/logo.png'; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,28 +50,35 @@ const Navbar = () => {
     exit: { x: -20, opacity: 0 }
   };
 
+  const handleCall = () => {
+    window.location.href = 'tel:9871874041';
+  };
+
+  const ringAnimation = {
+    scale: [1, 1.1, 1],
+    rotate: [0, 5, -5, 0],
+    transition: {
+      duration: 0.5,
+      repeat: Infinity,
+      repeatType: "reverse"
+    }
+  };
+
   return (
     <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-gradient-to-r from-blue-900 to-teal-800 shadow-lg py-2' : 'bg-transparent py-4'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
 
-          {/* Brand with Logo */}
+          {/* Brand - Updated to always show full name */}
           <div className="flex-shrink-0 flex items-center">
             <ScrollLink
               to="hero"
               smooth={true}
               duration={500}
-              className="flex items-center cursor-pointer"
+              className="text-2xl font-bold tracking-wide cursor-pointer flex items-center text-white whitespace-nowrap"
             >
-              <img 
-                src={logo} 
-                alt="Jagdamba Health Care Logo" 
-                className="h-20 w-auto mr-3" 
-              />
-              <div className="text-2xl font-bold tracking-wide text-white whitespace-nowrap">
-                <span className="text-teal-300">JAGDAMBA</span>
-                <span className="ml-1 text-white">HEALTH CARE</span>
-              </div>
+              <span className="text-teal-300">JAGDAMBA</span>
+              <span className="ml-1 text-white">HEALTH CARE</span>
             </ScrollLink>
           </div>
 
@@ -93,14 +99,16 @@ const Navbar = () => {
               </ScrollLink>
             ))}
             
-            {/* Contact Button */}
-            <RouterLink 
-              to="/contact" 
+            {/* Contact Button - Updated with phone number and animation */}
+            <motion.button
+              onClick={handleCall}
               className="ml-4 bg-teal-400 hover:bg-teal-300 text-gray-900 font-semibold px-5 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center"
+              animate={ringAnimation}
+              whileHover={{ scale: 1.05 }}
             >
               <FaPhoneAlt className="mr-2" />
-              Contact Us
-            </RouterLink>
+              9871874041
+            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -141,14 +149,15 @@ const Navbar = () => {
                 </motion.div>
               ))}
               <motion.div variants={mobileItemVariants}>
-                <RouterLink
-                  to="/contact"
-                  className="block px-4 py-3 text-lg rounded-md bg-teal-400 text-gray-900 hover:bg-teal-300 cursor-pointer transition-colors duration-300 flex items-center font-semibold"
-                  onClick={() => setIsOpen(false)}
+                <motion.button
+                  onClick={handleCall}
+                  className="w-full px-4 py-3 text-lg rounded-md bg-teal-400 text-gray-900 hover:bg-teal-300 cursor-pointer transition-colors duration-300 flex items-center font-semibold"
+                  animate={ringAnimation}
+                  whileHover={{ scale: 1.05 }}
                 >
                   <FaPhoneAlt className="mr-2" />
-                  Contact Us
-                </RouterLink>
+                  9871874041
+                </motion.button>
               </motion.div>
             </motion.div>
           </motion.div>
