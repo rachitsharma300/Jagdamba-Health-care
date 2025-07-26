@@ -26,4 +26,24 @@ A clean, responsive, and informative website for **Jagdamba Health Care**, provi
 ---
 
 ## 📂 Project Structure
+```
+JHC/
+├── public/
+│ ├── assets/
+│ │ └── images/
+│ │ └── Logo.png
+├── src/
+│ ├── components/
+│ ├── pages/
+│ │ └── AdminPanel.jsx
+│ ├── App.jsx
+│ └── main.jsx
+├── index.html
+└── package.json
+
+yaml
+Copy
+Edit
+```
+
 
