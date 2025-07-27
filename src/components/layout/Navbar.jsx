@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link as ScrollLink } from 'react-scroll';
-import { Link as RouterLink } from 'react-router-dom';
-import { FaBars, FaTimes, FaPhoneAlt } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { Link as ScrollLink } from "react-scroll";
+import { Link as RouterLink } from "react-router-dom";
+import { FaBars, FaTimes, FaPhoneAlt } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,39 +19,39 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { to: 'hero', label: 'Home' },
-    { to: 'about', label: 'About' },
-    { to: 'services', label: 'Services' },
-    { to: 'contact', label: 'Contact' },
+    { to: "hero", label: "Home" },
+    { to: "about", label: "About" },
+    { to: "services", label: "Services" },
+    { to: "contact", label: "Contact" },
   ];
 
   const mobileMenuVariants = {
     hidden: { opacity: 0, y: -20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         staggerChildren: 0.1,
         delayChildren: 0.2,
-        when: "beforeChildren"
-      }
+        when: "beforeChildren",
+      },
     },
-    exit: { opacity: 0, y: -20 }
+    exit: { opacity: 0, y: -20 },
   };
 
   const mobileItemVariants = {
     hidden: { x: -20, opacity: 0 },
     visible: { x: 0, opacity: 1 },
-    exit: { x: -20, opacity: 0 }
+    exit: { x: -20, opacity: 0 },
   };
 
   const handleCall = () => {
-    window.location.href = 'tel:9871874041';
+    window.location.href = "tel:9871874041";
   };
 
   const ringAnimation = {
@@ -60,15 +60,20 @@ const Navbar = () => {
     transition: {
       duration: 0.5,
       repeat: Infinity,
-      repeatType: "reverse"
-    }
+      repeatType: "reverse",
+    },
   };
 
   return (
-    <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-gradient-to-r from-blue-900 to-teal-800 shadow-lg py-2' : 'bg-transparent py-4'}`}>
+    <nav
+      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-gradient-to-r from-blue-900 to-teal-800 shadow-lg py-2"
+          : "bg-transparent py-4"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-
           {/* Brand - Updated to always show full name */}
           <div className="flex-shrink-0 flex items-center">
             <ScrollLink
@@ -98,7 +103,7 @@ const Navbar = () => {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-300 transition-all duration-300 group-hover:w-full"></span>
               </ScrollLink>
             ))}
-            
+
             {/* Contact Button - Updated with phone number and animation */}
             <motion.button
               onClick={handleCall}
@@ -107,13 +112,13 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
             >
               <FaPhoneAlt className="mr-2" />
-              9871874041
+              Call Now
             </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <button 
+            <button
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-teal-300 focus:outline-none transition-colors duration-300"
               aria-label="Toggle menu"
@@ -127,7 +132,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             className="md:hidden bg-gradient-to-b from-blue-900 to-teal-800 shadow-xl"
             initial="hidden"
             animate="visible"
@@ -156,7 +161,7 @@ const Navbar = () => {
                   whileHover={{ scale: 1.05 }}
                 >
                   <FaPhoneAlt className="mr-2" />
-                  9871874041
+                  Call Now
                 </motion.button>
               </motion.div>
             </motion.div>
