@@ -12,10 +12,11 @@ import Services from "./pages/Service";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import AdminPanel from "./pages/AdminPanel";
-import { ThemeProvider } from "./context/ThemeContext";
 import NotFound from "./pages/NotFound";
 
-// Layout component for regular pages (with navbar and footer)
+import { ThemeProvider } from "./context/ThemeContext";
+
+// Layouts
 const MainLayout = ({ children }) => (
   <div className="flex flex-col min-h-screen">
     <Navbar />
@@ -26,41 +27,61 @@ const MainLayout = ({ children }) => (
   </div>
 );
 
-// Layout component for admin pages (without navbar and footer)
 const AdminLayout = ({ children }) => (
-  <div className="min-h-screen">
+  <div className="min-h-screen bg-gray-100">
     {children}
   </div>
 );
 
 const App = () => {
   return (
-      <ThemeProvider>
-    <Routes>
-      {/* Home route with all sections */}
-      <Route
-        path="/"
-        element={
-          <MainLayout>
-            <>
-              <Hero />
-              <About />
-              <Services />
-              <Contact />
-            </>
-          </MainLayout>
-        }
-      />
-      
-      {/* Login page with main layout */}
-      <Route path="/login" element={<MainLayout><Login /></MainLayout>} />
-      
-      {/* Admin panel with special layout (no navbar/footer) */}
-      <Route path="/admin" element={<AdminLayout><AdminPanel /></AdminLayout>} />
-      
-      {/* 404 page with main layout */}
-      <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
-    </Routes>
+    <ThemeProvider>
+      <Routes>
+        {/* Home - all sections */}
+        <Route
+          path="/"
+          element={
+            <MainLayout>
+              <>
+                <Hero />
+                <About />
+                <Services />
+                <Contact />
+              </>
+            </MainLayout>
+          }
+        />
+
+        {/* Login */}
+        <Route
+          path="/login"
+          element={
+            <MainLayout>
+              <Login />
+            </MainLayout>
+          }
+        />
+
+        {/* Admin */}
+        <Route
+          path="/admin"
+          element={
+            <AdminLayout>
+              <AdminPanel />
+            </AdminLayout>
+          }
+        />
+
+        {/* Not Found */}
+        <Route
+          path="*"
+          element={
+            <MainLayout>
+              <NotFound />
+            </MainLayout>
+          }
+        />
+      </Routes>
     </ThemeProvider>
   );
 };
