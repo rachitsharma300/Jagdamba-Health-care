@@ -13,12 +13,12 @@ const WhatsAppButton = () => {
   const messages = [
     "Need healthcare advice? We're here!",
     "JHC experts available to help you",
-    "Get personalized health consultation",
+    // "Get personalized health consultation",
     "Ask about our healthcare services",
     "Your wellness is our priority",
     "Chat with JHC specialists now!",
-    "Professional medical guidance available",
-    "Discuss your health concerns with us",
+    // "Professional medical guidance available",
+    // "Discuss your health concerns with us",
     "Message our team for quick advice",
     "Quality care with JHC Health Services"
   ];
