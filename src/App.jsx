@@ -5,12 +5,14 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import WhatsAppButton from "./components/common/WhatsAppButton";
 import ScrollToTopButton from "./components/common/ScrollToTopButton";
+import PromotionalPopup from "./components/common/PromotionalPopup";
 
-import Hero from "./components/home/Hero";
+// import Hero from "./components/home/Hero";
+import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Service";
 import Contact from "./pages/Contact";
-import Login from "./pages/Login";
+// import Login from "./pages/Login";
 import AdminPanel from "./pages/AdminPanel";
 import NotFound from "./pages/NotFound";
 
@@ -24,13 +26,12 @@ const MainLayout = ({ children }) => (
     <Footer />
     <WhatsAppButton />
     <ScrollToTopButton />
+    <PromotionalPopup />
   </div>
 );
 
 const AdminLayout = ({ children }) => (
-  <div className="min-h-screen bg-gray-100">
-    {children}
-  </div>
+  <div className="min-h-screen bg-gray-100">{children}</div>
 );
 
 const App = () => {
@@ -43,7 +44,8 @@ const App = () => {
           element={
             <MainLayout>
               <>
-                <Hero />
+              <Home />
+                {/* <Hero /> */}
                 <About />
                 <Services />
                 <Contact />
@@ -53,14 +55,14 @@ const App = () => {
         />
 
         {/* Login */}
-        <Route
+        {/* <Route
           path="/login"
           element={
             <MainLayout>
               <Login />
             </MainLayout>
           }
-        />
+        /> */}
 
         {/* Admin */}
         <Route
