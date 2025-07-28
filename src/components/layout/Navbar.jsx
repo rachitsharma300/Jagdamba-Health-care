@@ -3,6 +3,7 @@ import { Link as ScrollLink } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
 import { FaBars, FaTimes, FaPhoneAlt } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import Logo from "../../assets/logo/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +52,7 @@ const Navbar = () => {
   };
 
   const handleCall = () => {
-    window.location.href = "tel:9871874041";
+    window.location.href = "tel:9718381908";
   };
 
   const ringAnimation = {
@@ -75,7 +76,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Brand - Updated to always show full name */}
-          <div className="flex-shrink-0 flex items-center">
+          <div className="flex items-center space-x-2 min-w-o">
+            <img src={Logo} alt="Logo" className="h-13 w-12 object-contain" />
             <ScrollLink
               to="hero"
               smooth={true}
