@@ -19,9 +19,9 @@ const Footer = () => {
   ];
 
   const contactInfo = [
-    { icon: <FaPhoneAlt />, text: "+91-9876543210" },
+    { icon: <FaPhoneAlt />, text: "+91 97183 81908" },
     { icon: <FaEnvelope />, text: "info@jagdambahealthcare.com" },
-    { icon: <FaMapMarkerAlt />, text: "Patna, Bihar, India" }
+    { icon: <FaMapMarkerAlt />, text: "Delhi, Patparganj, India" }
   ];
 
   const containerVariants = {
@@ -142,7 +142,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Admin Link */}
           <Link
-            to="/login"
+            to="/admin"
             className="text-sm text-gray-400 hover:text-teal-300 transition-colors duration-300 mb-4 md:mb-0"
           >
             Admin Portal
