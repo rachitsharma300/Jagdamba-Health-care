@@ -4,7 +4,7 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import Services from '../pages/Service';
 import Contact from '../pages/Contact';
-import Login from '../pages/Login'; // ✅ Import Login page
+import Login from '../pages/Login'; // Import Login page
 import AdminPanel from '../pages/AdminPanel';
 import NotFound from '../pages/NotFound';
 
